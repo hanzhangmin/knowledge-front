@@ -1,0 +1,180 @@
+/* 头部样式 */
+.ant-layout-header {
+  padding-left: 0px !important;
+}
+.adminHeader {
+  position: fixed;
+  width: 100%;
+  padding-right: 10px !important;
+  z-index: 1000;
+}
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.server-header {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  padding-right: 0;
+  display: flex;
+  justify-content: center;
+  background-color: #fff !important;
+}
+.server-header div {
+  margin: 0 60px;
+}
+
+.server-content {
+  padding: 0;
+  max-width: 1280px;
+  width: 100%;
+  margin: 70px auto !important;
+}
+/* 除头部下样式 */
+.body-layout {
+  position: absolute;
+  width: 100%;
+}
+/* 内容展示区布局样式 */
+.content-layout {
+  padding-top: 64px;
+  height: 100vh;
+  padding-bottom: 10px;
+  overflow-x: scroll;
+  overflow-x: hidden;
+}
+/* 左侧导航栏样式 */
+.sider {
+  height: 100vh;
+  box-sizing: border-box;
+  padding-top: 64px;
+  align-self: flex-end;
+}
+/* 内容展示区样式 */
+.content-body {
+  position: relative;
+  margin: 16px;
+  min-height: calc(100vh - 100px);
+  padding: 10px;
+  background-color: #fff;
+}
+
+.ant-layout-header h1 {
+  color: #fff;
+  font-size: 36px;
+  font-family: "华文行楷";
+}
+.align-right {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 10px;
+}
+.h1 {
+  font-size: 36px;
+  /* font-family: "华文行楷"; */
+}
+
+.h2 {
+  font-size: 24px;
+  /* font-family: "华文行楷"; */
+}
+
+.h3 {
+  font-size: 20px;
+  /* font-family: "华文行楷"; */
+}
+.h4 {
+  font-size: 14px;
+  /* font-family: "华文行楷"; */
+}
+.knowledge-border {
+  border: 1px solid #eee;
+  padding: 10px;
+}
+
+/* .ant-tabs-left {
+  margin-left: -10px !important;
+} */
+.ant-tabs-left .ant-tabs-tab {
+  padding: 5px 10px !important;
+  margin-bottom: 5px !important;
+}
+.ant-tabs-left .ant-tabs-tab-active {
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.info-box {
+  background-color: rgba(0, 0, 0, 0.06);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+.info-box .info-details {
+  flex: 1;
+  height: 100%;
+  align-self: center;
+  justify-self: center;
+  text-align: center;
+}
+.info-box .info-img {
+  text-align: center;
+  width: 80px;
+  margin-right: 10px;
+}
+.info-img .info-tag {
+  display: inline-block;
+  margin-top: 5px;
+}
+.info-box .info-number {
+  font-size: 50px;
+}
+.login-bg {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+
+.login-bg .login-bottom {
+  height: 70vh;
+  background: url("../images/bg.jpg") center no-repeat;
+  background-size: cover;
+}
+.login-bg .login-top {
+  height: 30vh;
+  background-color: #004080;
+}
+.login-bg .login-title {
+  position: absolute;
+  top: 30vh;
+  height: 60px;
+  line-height: 60px;
+  margin-top: -30px;
+  color: #fff;
+  font-size: 60px;
+  font-family: "华文行楷";
+  text-shadow: 0px 0px 2px #ccc;
+  padding-left: 20px;
+}
+.login-bg .login-card {
+  position: absolute;
+  width: 400px;
+  right: 200px;
+  top: 30%;
+  /* transform: translateY(-50%); */
+  margin-top: -81px;
+}
+#components-form-demo-normal-login .login-form {
+  /* max-width: 300px; */
+}
+#components-form-demo-normal-login .login-form-forgot {
+  float: right;
+}
+#components-form-demo-normal-login .ant-col-rtl .login-form-forgot {
+  float: left;
+}
+#components-form-demo-normal-login .login-form-button {
+  width: 100%;
+}

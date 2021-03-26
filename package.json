@@ -1,0 +1,57 @@
+{
+  "name": "knowledge-front",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^12.8.1",
+    "@tinymce/tinymce-react": "^3.10.4",
+    "antd": "^4.13.1",
+    "axios": "^0.21.1",
+    "echarts": "^5.0.2",
+    "echarts-for-react": "^3.0.1",
+    "http-proxy-middleware": "^1.0.6",
+    "install": "^0.13.0",
+    "less": "^4.1.1",
+    "less-loader": "^5.0.0",
+    "moment": "^2.29.1",
+    "npm": "^7.7.4",
+    "pubsub-js": "^1.9.3",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-router-cache-route": "^1.11.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.1.0"
+  },
+  "scripts": {
+    "dev": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "less": "^4.1.1",
+    "less-loader": "^8.0.0",
+    "react-app-rewired": "^2.1.8"
+  }
+}
