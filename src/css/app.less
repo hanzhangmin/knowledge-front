@@ -118,64 +118,61 @@
   display: flex;
   justify-content: space-between;
   margin: 5px 0;
-}
-.info-box .info-details {
-  flex: 1;
-  height: 100%;
-  align-self: center;
-  justify-self: center;
-  text-align: center;
-}
-.info-box .info-img {
-  text-align: center;
-  width: 80px;
-  margin-right: 10px;
-}
-.info-img .info-tag {
-  display: inline-block;
-  margin-top: 5px;
-}
-.info-box .info-number {
-  font-size: 50px;
+  .info-details {
+    flex: 1;
+    height: 100%;
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    .info-number {
+      font-size: 50px;
+    }
+  }
+  .info-img {
+    text-align: center;
+    width: 80px;
+    margin-right: 10px;
+    .info-tag {
+      display: inline-block;
+      margin-top: 5px;
+    }
+  }
 }
 .login-bg {
   position: relative;
   height: 100vh;
   width: 100vw;
+  .login-title {
+    position: absolute;
+    top: 30vh;
+    height: 60px;
+    line-height: 60px;
+    margin-top: -30px;
+    color: #fff;
+    font-size: 60px;
+    font-family: "华文行楷";
+    text-shadow: 0px 0px 2px #ccc;
+    padding-left: 20px;
+  }
+  .login-card {
+    position: absolute;
+    width: 400px;
+    right: 200px;
+    top: 30%;
+    /* transform: translateY(-50%); */
+    margin-top: -81px;
+  }
+  .login-bottom {
+    height: 70vh;
+    background: url("../images/bg.jpg") center no-repeat;
+    background-size: cover;
+  }
+  .login-top {
+    height: 30vh;
+    background-color: #004080;
+  }
 }
 
-.login-bg .login-bottom {
-  height: 70vh;
-  background: url("../images/bg.jpg") center no-repeat;
-  background-size: cover;
-}
-.login-bg .login-top {
-  height: 30vh;
-  background-color: #004080;
-}
-.login-bg .login-title {
-  position: absolute;
-  top: 30vh;
-  height: 60px;
-  line-height: 60px;
-  margin-top: -30px;
-  color: #fff;
-  font-size: 60px;
-  font-family: "华文行楷";
-  text-shadow: 0px 0px 2px #ccc;
-  padding-left: 20px;
-}
-.login-bg .login-card {
-  position: absolute;
-  width: 400px;
-  right: 200px;
-  top: 30%;
-  /* transform: translateY(-50%); */
-  margin-top: -81px;
-}
-#components-form-demo-normal-login .login-form {
-  /* max-width: 300px; */
-}
 #components-form-demo-normal-login .login-form-forgot {
   float: right;
 }

@@ -37,6 +37,7 @@ import IPs from "pages/admin/user/IPs";
 // 日志管理
 import Search from "pages/admin/log/Search";
 import System from "pages/admin/log/System";
+import LogStatistics from "pages/admin/log/Statistics";
 // 访问控制
 import Access from "pages/admin/access/Access";
 // test
@@ -169,6 +170,13 @@ export const adminRoutes = [
         component: Search,
         title: "搜索日志",
         breadcrumbName: `日志管理 > 搜索日志`,
+      },
+      {
+        path: "/admin/log/statistics",
+        parentKey: "/admin/log",
+        component: LogStatistics,
+        title: "日志分析",
+        breadcrumbName: `日志管理 > 日志分析`,
       },
     ],
   },

@@ -117,31 +117,22 @@
   justify-self: center;
   text-align: center;
 }
+.info-box .info-details .info-number {
+  font-size: 50px;
+}
 .info-box .info-img {
   text-align: center;
   width: 80px;
   margin-right: 10px;
 }
-.info-img .info-tag {
+.info-box .info-img .info-tag {
   display: inline-block;
   margin-top: 5px;
-}
-.info-box .info-number {
-  font-size: 50px;
 }
 .login-bg {
   position: relative;
   height: 100vh;
   width: 100vw;
-}
-.login-bg .login-bottom {
-  height: 70vh;
-  background: url("../images/bg.jpg") center no-repeat;
-  background-size: cover;
-}
-.login-bg .login-top {
-  height: 30vh;
-  background-color: #004080;
 }
 .login-bg .login-title {
   position: absolute;
@@ -163,8 +154,14 @@
   /* transform: translateY(-50%); */
   margin-top: -81px;
 }
-#components-form-demo-normal-login .login-form {
-  /* max-width: 300px; */
+.login-bg .login-bottom {
+  height: 70vh;
+  background: url("../images/bg.jpg") center no-repeat;
+  background-size: cover;
+}
+.login-bg .login-top {
+  height: 30vh;
+  background-color: #004080;
 }
 #components-form-demo-normal-login .login-form-forgot {
   float: right;
