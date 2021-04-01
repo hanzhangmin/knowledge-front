@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="myclick(this)">click！</button>
+    <script>
+      // function fn() {
+      //   console.log(1);
+      // }
+      // function debounce(fn, wait, immediate) {
+      //   let timer;
+      //   console.log(timer);
+      //   return function () {
+      //     let context = this;
+      //     let args = arguments;
+      //     if (timer) {
+      //       clearTimeout(timer);
+      //     }
+      //   };
+      // }
+      // let myclick = debounce(fn, 1000);
+      // let arr = [0, [1, 2, 3, 4, [5, 66, 7, 8, [9, 10]]]];
+      // let newarr = [...arr];
+      // console.log(arr, newarr);
+      // // newarr[0] = 100;
+      // newarr[0] = 100;
+      // console.log(arr, newarr);
+      function _get(object, keys, defaultValue) {
+        return (
+          keys.split(/\./).reduce((pre, now) => (pre || {})[now], object) ||
+          defaultValue
+        );
+      }
+    </script>
+  </body>
+</html>

@@ -24,7 +24,12 @@ class Frame extends Component {
       <div>
         <Layout>
           <Header className="server-header">
-            <div className="logo">
+            <div
+              className="logo"
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                this.props.history.push("/server/home");
+              }}>
               <h1 style={{ color: "#004080" }}>
                 <img
                   src={Logo}
@@ -61,7 +66,6 @@ class Frame extends Component {
             <div
               style={{
                 minHeight: "90vh",
-                backgroundColor: "#fff",
                 padding: 10,
               }}>
               {this.props.children}

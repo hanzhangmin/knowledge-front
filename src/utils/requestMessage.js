@@ -4,18 +4,18 @@ import ReactDOM from "react-dom";
 import { Spin } from "antd";
 let div = document.createElement("div");
 document.body.appendChild(div);
+let style = {
+  position: "fixed",
+  width: "100%",
+  height: "100%",
+  textAlign: "center",
+  lineHeight: "100%",
+  zIndex: 100000,
+  backgroundColor: "rgba(0,0,0,0.3)",
+};
 export function createdLoading() {
   ReactDOM.render(
-    <div
-      style={{
-        position: "fixed",
-        width: "100%",
-        height: "100%",
-        textAlign: "center",
-        lineHeight: "100%",
-        zIndex: 100000,
-        backgroundColor: "rgba(0,0,0,0.3)",
-      }}>
+    <div style={style}>
       <Spin
         size="large"
         style={{ position: "absolute", top: "50%" }}

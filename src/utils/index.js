@@ -1,3 +1,4 @@
+import moment from "moment";
 // 扁平化路由
 export const flattenRoutes = (arr) =>
   arr.reduce((prev, item) => {
@@ -55,4 +56,47 @@ export function authenticate() {
   const token = localStorage.getItem("token");
   console.log(token);
   return token ? true : false;
+}
+
+// 将其他时间格式类型转换为时间戳格式
+// export function get
+// 检查对象数组中name相同的元素有哪些。
+// export function removeSame(data) {
+//   let obj = {};
+//   for (const item of data) {
+//     if (!obj[item.name]) {
+//       obj[item.name] = 1;
+//     } else {
+//       obj[item.name] = obj[item.name]++;
+//     }
+//   }
+//   console.log(Object.keys(obj).length);
+//   let arr = [];
+//   for (const key of Object.keys(obj)) {
+//     if (obj[key] > 1) arr.push(obj[key]);
+//   }
+//   console.log(arr);
+// }
+
+// 将http请求的参数符合规则
+export function setParams(type, obj) {
+  let keywords = obj.keywords || "";
+  let country = obj.country || "";
+  let filed = obj.filed || "";
+  let organization = obj.organization || "";
+  let startTime = "";
+  let endTime = "";
+  if (obj.rangeData) {
+    startTime = moment(obj.rangeData[0].format("YYYY-MM-DD"));
+    endTime = moment(obj.rangeData[1].format("YYYY-MM-DD"));
+  }
+  return {
+    type,
+    keywords,
+    country,
+    startTime,
+    organization,
+    filed,
+    endTime,
+  };
 }

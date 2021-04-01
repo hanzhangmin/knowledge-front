@@ -2875,6 +2875,58 @@ export const chartColors = [
   "#58D5FF",
 ];
 
+// 图表样式设置
+export const chartsCategories = [
+  {
+    name: "机构",
+    itemStyle: {
+      normal: {
+        color: chartColors[0],
+      },
+    },
+  },
+  {
+    name: "人员",
+    itemStyle: {
+      normal: {
+        color: chartColors[1],
+      },
+    },
+  },
+  {
+    name: "项目",
+    itemStyle: {
+      normal: {
+        color: chartColors[2],
+      },
+    },
+  },
+  {
+    name: "装备",
+    itemStyle: {
+      normal: {
+        color: chartColors[3],
+      },
+    },
+  },
+  {
+    name: "技术",
+    itemStyle: {
+      normal: {
+        color: chartColors[4],
+      },
+    },
+  },
+  {
+    name: "报告/条令",
+    itemStyle: {
+      normal: {
+        color: chartColors[5],
+      },
+    },
+  },
+];
+
 // 单个文件上传组件设置props
 
 export const singleUpload = {

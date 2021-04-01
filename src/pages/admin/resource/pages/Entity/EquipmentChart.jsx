@@ -9,6 +9,9 @@ import ExtractForm from "components/Resource/Extract/ExtractForm";
 import { chartStyle } from "options/index";
 import RightClickMenu from "components/1-common/contextmenu/index";
 import MoreAdd from "components/1-common/FileUploader/MoreFileUpload";
+import { common_post } from "api/index";
+import { chartColors, chartsCategories } from "options/index";
+import { setParams } from "utils/index";
 export default class EquipmentChart extends Component {
   constructor(props) {
     super(props);
@@ -30,6 +33,10 @@ export default class EquipmentChart extends Component {
       moreUpload: {
         action: "entity/moreAdd",
       },
+      // 图表的 data 数据
+      charsNode: [],
+      // 图表的 link 数据
+      chartsLink: [],
     };
   }
   chartRef = React.createRef();
@@ -42,8 +49,9 @@ export default class EquipmentChart extends Component {
       e = e || window.event;
       return false;
     };
+    this.onSearch({});
   };
-
+  // 组件销毁之前的回调
   componentWillUnmount = () => {
     RightClickMenu.destroyMenu();
   };
@@ -125,8 +133,11 @@ export default class EquipmentChart extends Component {
     console.log(value);
   };
 
-  // 获取charts配置数据
-  getOption = () => {
+  // 获取charts配置
+  getOption = (data, link) => {
+    let { charsNode, chartsLink } = this.state;
+    data = data || charsNode;
+    link = link || chartsLink;
     return {
       title: {
         text: "装备型实体关系图",
@@ -152,6 +163,20 @@ export default class EquipmentChart extends Component {
       },
       animationDuration: 3000,
       animationEasingUpdate: "quinticInOut",
+      legend: {
+        data: ["机构", "人员", "项目", "装备", "技术", "报告条令"],
+        textStyle: {
+          color: "#000000",
+        },
+        icon: "circle",
+        type: "scroll",
+        orient: "vertical",
+        left: 10,
+        top: 20,
+        bottom: 20,
+        itemWidth: 10,
+        itemHeight: 10,
+      },
       series: [
         {
           type: "graph",
@@ -159,7 +184,6 @@ export default class EquipmentChart extends Component {
           symbolSize: 45,
           focusNodeAdjacency: true,
           roam: true,
-
           label: {
             normal: {
               show: true,
@@ -174,6 +198,17 @@ export default class EquipmentChart extends Component {
           edgeSymbolSize: [4, 50],
           edgeSymbol: ["", "arrow"],
           edgeSymbolSize: 10,
+          lineStyle: {
+            // ========关系边的公用线条样式。
+            color: "source",
+            curveness: 0.3,
+          },
+          emphasis: {
+            focus: "adjacency",
+            lineStyle: {
+              width: 10,
+            },
+          },
           edgeLabel: {
             normal: {
               show: true,
@@ -183,72 +218,12 @@ export default class EquipmentChart extends Component {
               formatter: "{c}",
             },
           },
-          data: [
-            {
-              name: "节点0",
-              draggable: true,
-            },
-            {
-              name: "节点1",
-              draggable: true,
-            },
-            {
-              name: "节点2",
-              draggable: true,
-            },
-          ],
-          links: [
-            {
-              source: "节点0",
-              target: "节点1",
-              value: "0-1",
-            },
-            {
-              source: "节点0",
-              target: "节点2",
-              value: "0-2",
-            },
-            {
-              source: "节点1",
-              target: "节点2",
-              value: "1-2",
-            },
-          ],
-          // categories: [
-          //   {
-          //     name: "1",
-          //     itemStyle: {
-          //       normal: {
-          //         color: "#009800",
-          //       },
-          //     },
-          //   },
-          //   {
-          //     name: "2",
-          //     itemStyle: {
-          //       normal: {
-          //         color: "#4592FF",
-          //       },
-          //     },
-          //   },
-          //   {
-          //     name: "3",
-          //     itemStyle: {
-          //       normal: {
-          //         color: "#3592F",
-          //       },
-          //     },
-          //   },
-          // ],
-          lineStyle: {
-            normal: {
-              opacity: 0.9,
-              width: 3,
-              curveness: 0,
-            },
-          },
+          data: data,
+          links: link,
+          categories: chartsCategories,
         },
       ],
+      color: chartColors,
     };
   };
 
@@ -289,9 +264,27 @@ export default class EquipmentChart extends Component {
   onChartClick = (params) => {
     console.log(params);
   };
+
   // 点击搜索按钮的回调 在这里得到getOption需要的数据
-  onSearch = (value) => {
-    console.log(value);
+  onSearch = async (value) => {
+    let params = setParams("装备", value);
+    let res = await common_post("/showData/chart", params);
+    if (res) {
+      let data = res.data.node.map((item) => {
+        return {
+          name: item.name,
+          entityId: item.id,
+          category: item.type,
+        };
+      });
+      this.setState({
+        charsNode: data,
+        chartsLink: res.data.relationship,
+      });
+    }
+    // this.chartRef.props.option.series[0].data = res.data.node;
+    // this.chartRef.props.option.series[0].links = res.data.relationship;
+    // this.chartRef.getEchartsInstance().setOption(this.chartRef.props.option);
   };
 
   render() {
@@ -365,7 +358,9 @@ export default class EquipmentChart extends Component {
         </div>
         <Divider style={{ margin: "10px 0" }} />
         <ReactECharts
-          ref={this.chartRef}
+          ref={(e) => {
+            this.chartRef = e;
+          }}
           style={chartStyle}
           option={this.getOption()}
           onEvents={chartsEvents}

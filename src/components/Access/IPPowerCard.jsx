@@ -1,51 +1,42 @@
 import React, { Component } from "react";
-import { Card, Checkbox, Button, Divider } from "antd";
+import { Card, Checkbox, Button, Divider, Form, Input, Select } from "antd";
+const { Option } = Select;
 let powers = [
   {
-    value: "systemUsers",
-    label: "管理服务型用户信息",
+    value: "onlyRead",
+    label: "仅查阅",
     disabled: false,
   },
   {
-    value: "managersrank1",
-    label: "管理高级管理员用户信息",
-    disabled: false,
-  },
-  {
-    value: "managersrank2",
-    label: "管理普通管理员用户信息",
-    disabled: false,
-  },
-  {
-    value: "dataSource",
-    label: "管理数据源信息",
-    disabled: false,
-  },
-  {
-    value: "userPower",
-    label: "角色权限管理",
-    disabled: false,
-  },
-  {
-    value: "logSetting",
-    label: "日志管理",
+    value: "retrieval",
+    label: "检索",
     disabled: false,
   },
 ];
-
+const selectBefore = (
+  <Select defaultValue="http://" className="select-before">
+    <Option value="http://">http://</Option>
+    <Option value="https://">https://</Option>
+  </Select>
+);
 export default class PowerCard extends Component {
+  formRef = React.createRef();
   state = {
     checkAll: false,
-    // defaultValue: defaultValue,
-    // checkList: defaultValue,
   };
   componentDidMount = () => {
-    let { id, name, power } = this.props;
+    let { id, ipstart, ipend, power } = this.props;
     this.setState({
       id: id,
       defaultValue: power,
       checkList: power,
-      name: name,
+      ipstart,
+      ipend,
+    });
+    this.formRef.current.resetFields();
+    this.formRef.current.setFieldsValue({
+      ipstart,
+      ipend,
     });
   };
 
@@ -69,6 +60,7 @@ export default class PowerCard extends Component {
     }
     //   if(value.target.checked)
   };
+
   // 多选框的回调
   onCheckChange = (value) => {
     this.setState({
@@ -80,12 +72,26 @@ export default class PowerCard extends Component {
   // 保存修改
   saveChange = () => {};
   render() {
-    let { checkAll, defaultValue, checkList, name } = this.state;
-    console.log(name);
+    let { checkAll, defaultValue, checkList } = this.state;
     return (
       <Card
         style={{ marginTop: 10 }}
-        title={`${name}权限设置`}
+        title={
+          <div>
+            <p>ip区间：</p>
+            <Form
+              ref={this.formRef}
+              name="basic"
+              initialValues={{ remember: true }}>
+              <Form.Item name="ipstart">
+                <Input addonBefore={selectBefore} />
+              </Form.Item>
+              <Form.Item name="ipend">
+                <Input addonBefore={selectBefore} />
+              </Form.Item>
+            </Form>
+          </div>
+        }
         actions={[<Button onClick={this.saveChange}> 保存</Button>]}>
         <Checkbox
           onChange={this.onCheckAllChange}

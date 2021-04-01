@@ -11,16 +11,19 @@ function pathResolve(pathUrl) {
 }
 
 module.exports = override(
+  // 配置按需加载
   fixBabelImports("import", {
     libraryName: "antd",
     libraryDirectory: "es",
     // style: "css",
     style: true,
   }),
+  // 配置主题颜色
   addLessLoader({
     javascriptEnabled: true,
     modifyVars: { "@primary-color": "#004080" },
   }),
+  // 配置别名
   addWebpackAlias({
     "@": pathResolve("./src"),
     components: pathResolve("./src/components"),

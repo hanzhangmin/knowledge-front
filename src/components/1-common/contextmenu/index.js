@@ -17,7 +17,7 @@ function updataMenu(props) {
 // 销毁组件 当从一个页面离开的时候销毁
 function destroyMenu() {
   ReactDOM.unmountComponentAtNode(div);
-  document.body.removeChild(div);
+  // document.body.removeChild(div);
 }
 
 const RightClickMenu = {
